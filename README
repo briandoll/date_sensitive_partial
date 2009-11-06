@@ -1,0 +1,24 @@
+DateSensitivePartial
+====================
+
+Have you ever wanted to render a specific partial, based on what the current date/time was?
+
+With date_sensitive_partial, you can specify in one place, a mapping of partial groupings to their corresponding start and stop date/times and can render them with a simple helper call.
+
+Example
+=======
+In config/initializers/date_sensitive_partials.rb:
+# set up partials with start/stop dates for the "boo" grouping:
+DateSensitivePartial::GROUPINGS["boo"] = [
+  DateSensitivePartial::DateRangePartial.new(DateTime.new(2009, 11, 1), DateTime.new(2009, 11, 10), "shared/boo"),
+  DateSensitivePartial::DateRangePartial.new(DateTime.new(2009, 11, 10), DateTime.new(2009, 11, 20), "shared/booya"),
+  ]
+
+
+In a view within your app:
+ <%= render :partial => date_sensitive_partial("boo") %>
+
+Or, if you'd like to render the partial for a specific date/time:
+ <%= render :partial => date_sensitive_partial("boo", DateTime.new(2009, 11, 7)) %>
+
+Copyright (c) 2009 Brian A. Doll, released under the MIT license
