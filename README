@@ -21,4 +21,10 @@ In a view within your app:
 Or, if you'd like to render the partial for a specific date/time:
  <%= render :partial => date_sensitive_partial("boo", DateTime.new(2009, 11, 7)) %>
 
+
+Install
+=======
+script/plugin install git://github.com/briandoll/date_sensitive_partial.git
+
+
 Copyright (c) 2009 Brian A. Doll, released under the MIT license
